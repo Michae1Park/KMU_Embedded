@@ -1,0 +1,25 @@
+A variable should be declared volatile whenever its value could change unexpectedly. In practice, only three types of variables could change:
+
+1. Memory-mapped peripheral registers(ie. Status Register)
+
+2. Global variables modified by an interrupt service routine
+
+3. Global variables accessed by multiple tasks within a multi-threaded application
+	(global variales shared by different functions need to be volatile)
+
+-Syntax
+
+volatile int foo; 
+int volatile foo;	//둘다됨
+
+
+int * volatile p;	//포인터는 이렇게
+
+And just for completeness, if you really must have a volatile pointer to a volatile variable, you'd write:
+
+int volatile * volatile p;
+
+
+
+
+http://www.barrgroup.com/Embedded-Systems/How-To/C-Volatile-Keyword
